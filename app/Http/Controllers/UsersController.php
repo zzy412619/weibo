@@ -11,6 +11,7 @@ class UsersController extends Controller
     {
         return view('users.create');
     }
+
     public function show(User $user)
     {
         return view('users.show', compact('user'));

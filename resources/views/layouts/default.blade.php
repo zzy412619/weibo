@@ -6,6 +6,7 @@
   </head>
 
   <body>
+
     @include('layouts._header')
 
     <div class="container">
@@ -14,5 +15,7 @@
         @include('layouts._footer')
       </div>
     </div>
+
+	
   </body>
 </html>
