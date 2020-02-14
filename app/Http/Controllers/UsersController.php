@@ -31,10 +31,7 @@ class UsersController extends Controller
         return view('users.create');
     }
 
-    public function show(User $user)
-    {
-        return view('users.show', compact('user'));
-    }
+    
 
     public function store(Request $request)
     {
@@ -99,7 +96,7 @@ class UsersController extends Controller
         });
     }
     //用户的激活操作
-     public function confirmEmail($token)
+    public function confirmEmail($token)
     {
         $user = User::where('activation_token', $token)->firstOrFail();
 
@@ -111,5 +108,14 @@ class UsersController extends Controller
         session()->flash('success', '恭喜你，激活成功！');
         return redirect()->route('users.show', [$user]);
     }
+    //添加微博
+    public function show(User $user)
+    {
+        $statuses = $user->statuses()
+                           ->orderBy('created_at', 'desc')
+                           ->paginate(10);
+        return view('users.show', compact('user', 'statuses'));
+    }
+   
 
 }

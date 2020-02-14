@@ -16,7 +16,6 @@ class CreateStatusesTable extends Migration
         Schema::create('statuses', function (Blueprint $table) {
             $table->increments('id');
             $table->text('content');
-            // ->index()是索引，为了加快效率
             $table->integer('user_id')->index();
             $table->index(['created_at']);
             $table->timestamps();

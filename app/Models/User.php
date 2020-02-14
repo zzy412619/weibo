@@ -54,7 +54,7 @@ class User extends Authenticatable
     }
 
     //在用户模型中，指明一个用户拥有多条微博。
-    public function statuess()
+    public function statuses()
     {
         return $this->hasMany(Status::class);
     } 
